@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/28 08:33:19 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/30 11:36:26 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdarg.h>
-# include <fcntl.h>
-
-# define MAXFD	4096
-# define BUFFER_SIZE	200
 
 typedef struct s_list
 {
@@ -77,25 +72,11 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 
-int		ft_dec_to_hex(unsigned long long n, int lower, int reset);
 void	ft_putunbr_fd(unsigned int n, int fd);
-int		ft_putaddr_fd(void *p);
 void	ft_putunlong(unsigned long n, int fd);
+void	ft_putunlonglong(unsigned long long n, int fd);
+int		ft_dec_to_hex(unsigned long long n, int lower, int reset);
 char	*ft_strupper(char *str);
 char	ft_getlastchar(char *str);
 int		ft_inset(char c, char const *set);
-
-int		ft_printf(const char *format, ...);
-int		ft_is_available_type(char c);
-int		ft_putchar(char c);
-int		ft_putint(int n);
-int		ft_putstr(char *c);
-int		ft_putuint(unsigned int n);
-void	ft_putunlonglong(unsigned long long n, int fd);
-int		ft_put_hex(unsigned long long p, int u);
-
-int		get_next_line(int fd, char **line);
-void	*ft_realloc(void **src, size_t size);
-int		ft_abs(int n);
-
 #endif

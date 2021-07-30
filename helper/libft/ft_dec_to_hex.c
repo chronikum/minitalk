@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putuint.c                                       :+:      :+:    :+:   */
+/*   ft_dec_to_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 10:35:39 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/19 08:36:10 by jfritz           ###   ########.fr       */
+/*   Created: 2021/07/05 13:46:30 by jfritz            #+#    #+#             */
+/*   Updated: 2021/07/13 17:05:44 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "libft.h"
 
-static int	ft_numberlength(unsigned int n)
+int	ft_dec_to_hex(unsigned long long n, int lower, int reset)
 {
-	unsigned int	o;
-	unsigned int	l;
+	unsigned long long	o;
+	char				r;
+	static int			length = 0;
 
-	o = n;
-	l = 0;
-	if (n < 0)
-		o = -o;
-	while (o > 0)
-	{
-		o /= 10;
-		l++;
-	}
-	return (l);
-}
-
-int	ft_putuint(unsigned int n)
-{
-	ft_putunbr_fd(n, 1);
+	o = 0;
+	if (reset)
+		length = 0;
 	if (n == 0)
-		return (1);
-	return (ft_numberlength(n));
+		return (length);
+	o = n % 16;
+	ft_dec_to_hex((n / 16), lower, 0);
+	if (o > 9)
+		r = 'A' + (o - 10);
+	else
+		r = (o + 48);
+	if (lower == 1)
+		r = ft_tolower(r);
+	length++;
+	write(1, &r, 1);
+	return (length);
 }

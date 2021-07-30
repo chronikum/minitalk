@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   minitalk_helper.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/22 19:34:30 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/25 13:44:52 by jfritz           ###   ########.fr       */
+/*   Created: 2021/07/30 11:28:03 by jfritz            #+#    #+#             */
+/*   Updated: 2021/07/30 13:49:59 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef MINITALK_HELPER_H
+# define MINITALK_HELPER_H
 
-void	*ft_realloc(void **src, size_t size)
-{
-	void	*dst;
-
-	dst = malloc(size);
-	if (!dst)
-	{
-		free((*src));
-		return (NULL);
-	}
-	if (!(*src))
-	{
-		free(dst);
-		return (NULL);
-	}
-	ft_memmove(dst, (*src), size);
-	free((*src));
-	(*src) = NULL;
-	return (dst);
-}
+# include <signal.h>
+# include "./libft/libft.h"
+#endif

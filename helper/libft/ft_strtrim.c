@@ -6,11 +6,15 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:35:22 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/19 08:20:44 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/07/06 14:49:24 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+size_t	ft_strlen(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *s1);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
