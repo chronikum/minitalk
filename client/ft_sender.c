@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_client.h                                  :+:      :+:    :+:   */
+/*   ft_sender.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 08:49:17 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/31 20:53:15 by jfritz           ###   ########.fr       */
+/*   Created: 2021/07/31 20:48:30 by jfritz            #+#    #+#             */
+/*   Updated: 2021/07/31 21:00:58 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_CLIENT_H
-# define MINITALK_CLIENT_H
+#include "minitalk_client.h"
 
-# include "../helper/minitalk_helper.h"
-# include "../helper/libft/libft.h"
+/*
+**	Sends a zero to the given pid
+*/
+void ft_send_zero(int pid)
+{
+	kill(pid, SIGUSR1);
+	write(1, "0", 1);
+}
 
-void	ft_send_zero(int pid);
-void	ft_send_one(int pid);
-
-#endif
+/*
+**	Sends a one to the given pid
+*/
+void ft_send_one(int pid)
+{
+	kill(pid, SIGUSR2);
+	write(1, "1", 1);
+}

@@ -6,7 +6,7 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/30 08:49:54 by jfritz            #+#    #+#              #
-#    Updated: 2021/07/30 11:36:58 by jfritz           ###   ########.fr        #
+#    Updated: 2021/07/31 20:52:54 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJS := $(*.o)
 
 SERVER = ./server/server.c
 
-CLIENT = ./client/client.c
+CLIENT = ./client/client.c ./client/ft_sender.c
 
 all: $(NAME)
 
