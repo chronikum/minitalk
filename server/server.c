@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/01 10:38:54 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/01 11:20:40 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_bin_to_dec(long long n)
 **	8 bits, after that converts every 8 bits
 **	to the correct char representation
 */
-static void	ft_sig_convert(int b)
+static void	ft_sig_convert(int b, int a)
 {
 	static int	counter = 0;
 	static char	str[8];
@@ -47,22 +47,23 @@ static void	ft_sig_convert(int b)
 
 	str[counter] = ft_itoa(b)[0];
 	counter++;
-	if (counter == 8)
+	if (counter > 7)
 	{
 		counter = 0;
-		ft_bin_to_dec(ft_atoi(str));
+		cd = ft_bin_to_dec(ft_atoi(str));
 		write(1, &cd, 1);
 	}
+	a = 1;
 }
 
-static void	ft_zero(void)
+static void	ft_zero(int a)
 {
-	ft_sig_convert(0);
+	ft_sig_convert(0, a);
 }
 
-static void	ft_one(void)
+static void	ft_one(int a)
 {
-	ft_sig_convert(1);
+	ft_sig_convert(1, a);
 }
 
 int	main(void)
