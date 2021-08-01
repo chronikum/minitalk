@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/01 11:20:40 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/01 12:24:23 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,20 @@ static void	ft_one(int a)
 int	main(void)
 {
 	pid_t	pid;
-
+	struct sigaction zero_action;
+	struct sigaction one_action;
+	
+	sigemptyset(&zero_action.sa_mask);
+	sigemptyset(&one_action.sa_mask);
+	zero_action.sa_handler = ft_zero;
+	one_action.sa_handler = ft_one;
+	sigaddset(&zero_action.sa_mask, SIGUSR1);
+	sigaddset(&one_action.sa_mask, SIGUSR2);
+	
 	pid = getpid();
 	ft_putnbr_fd((int) pid, 1);
-	signal(SIGUSR1, ft_zero);
-	signal(SIGUSR2, ft_one);
+	sigaction (SIGUSR1, &zero_action, NULL);
+	sigaction (SIGUSR2, &one_action, NULL);
 	while (1)
 	{
 	}

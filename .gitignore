@@ -13,3 +13,4 @@ settings.json
 extensions.json
 .vscode/
 test.txt
+./tester

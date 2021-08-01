@@ -6,7 +6,7 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/30 08:49:54 by jfritz            #+#    #+#              #
-#    Updated: 2021/07/31 20:52:54 by jfritz           ###   ########.fr        #
+#    Updated: 2021/08/01 12:08:18 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,12 @@ server:
 client:
 	${CC} ${CFLAGS} ${CLIENT} ${HELPERSRC} ${LIBFTNAME} -o ${CLIENTNAME}
 
+
+tester: fclean $(NAME)
+	rm -f ./tester/server.a
+	rm -f ./tester/client.a
+	cp server.a ./tester/
+	cp client.a ./tester/
 clean:
 	rm -rf *.o
 
