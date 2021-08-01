@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:33 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/01 11:15:36 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/01 11:26:55 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
 **	bit is at which position.
 **	Then send the appropiate signal
 */
-void	ft_char_to_bit(char c, int pid, int *sentBytes)
+void	ft_char_to_bit(char c, int pid)
 {
 	int			i;
-	static int	sent = 0;
 
 	i = 7;
 	while (i >= 0)
@@ -32,8 +31,6 @@ void	ft_char_to_bit(char c, int pid, int *sentBytes)
 		else
 			ft_send_zero(pid);
 		i--;
-		sent++;
-		(*sentBytes) = sent;
 	}
 }
 
@@ -45,16 +42,13 @@ void	ft_char_to_bit(char c, int pid, int *sentBytes)
 void	ft_iterate_over_str(char *str, int pid)
 {
 	int	i;
-	int	*sentBytes;
-
-	sentBytes = malloc(sizeof(int *));
+	
 	i = 0;
 	while (str[i])
 	{
-		ft_char_to_bit(str[i], pid, sentBytes);
+		ft_char_to_bit(str[i], pid);
 		i++;
 	}
-	free(sentBytes);
 }
 
 /*
