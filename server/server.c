@@ -6,13 +6,16 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/01 10:20:22 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/01 10:23:40 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_server.h"
 #include <stdio.h>
 
+/*
+**	Converts binary number to decimal number
+*/
 int ft_bin_to_dec(long long n) {
     int dec;
 	int i;
@@ -30,6 +33,11 @@ int ft_bin_to_dec(long long n) {
     return dec;
 }
 
+/*
+**	Takes all incoming signals and sums then up to
+**	8 bits, after that converts every 8 bits
+**	to the correct char representation
+*/
 static void ft_sig_convert(int b)
 {
 	static int	counter = 0;
