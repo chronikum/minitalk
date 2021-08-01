@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/01 09:59:30 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/01 10:05:05 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static void ft_sig_convert(int b)
 
 	str[counter] = ft_itoa(b)[0];
 	counter++;
-	if (counter == 7)
+	// printf("COUNTER: %d", counter);
+	if (counter == 8)
 	{
 		printf("%s\n", str);
 		counter = 0;
@@ -30,13 +31,11 @@ static void ft_sig_convert(int b)
 
 static void ft_zero()
 {
-    // write(1, "0", 1);
 	ft_sig_convert(0);
 }
 
 static void ft_one()
 {
-    // write(1, "1", 1);
 	ft_sig_convert(1);
 }
 
