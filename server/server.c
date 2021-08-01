@@ -6,32 +6,38 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/31 21:34:37 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/01 09:57:25 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_server.h"
 #include <stdio.h>
 
-static int ft_counter(int r)
+static void ft_sig_convert(int b)
 {
-	static int i = 0;
-	if (r)
-		i = 0;
-	i++;
-	return i;
+	static int	counter = 0;
+	// static char	str[8];
+	if (counter == 7)
+	{
+		// printf("%s\n", str);
+		counter = 0;
+	}
+	// str[counter] = ft_itoa(b)[0];
+	counter++;
+	// printf("%d", b);
+	ft_putnbr_fd(b, 1);
 }
 
 static void ft_zero()
 {
-    write(1, "0", 1);
-	ft_counter(0);
+    // write(1, "0", 1);
+	ft_sig_convert(0);
 }
 
 static void ft_one()
 {
-    write(1, "1", 1);
-	ft_counter(0);
+    // write(1, "1", 1);
+	ft_sig_convert(1);
 }
 
 int	main()

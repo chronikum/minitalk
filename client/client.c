@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:33 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/01 09:20:13 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/01 09:56:30 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_char_to_bit(char c, int pid, int *sentBytes)
 	i = 7;
 	while(i >= 0)
     {
-		usleep(200);
+		usleep(500);
 		if ((c >> i) & 0x01)
 			ft_send_one(pid);
 		else
