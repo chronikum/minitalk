@@ -14,3 +14,4 @@ extensions.json
 .vscode/
 test.txt
 ./tester
+tester/tester.sh

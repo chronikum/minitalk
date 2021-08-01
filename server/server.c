@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/01 12:24:23 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/01 18:59:11 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	ft_sig_convert(int b, int a)
 	static int	counter = 0;
 	static char	str[8];
 	int			cd;
-
+	
 	str[counter] = ft_itoa(b)[0];
 	counter++;
 	if (counter > 7)
