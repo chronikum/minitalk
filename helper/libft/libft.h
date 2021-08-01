@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:36:19 by jfritz            #+#    #+#             */
-/*   Updated: 2021/07/30 11:36:26 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/01 10:17:47 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,5 @@ int		ft_dec_to_hex(unsigned long long n, int lower, int reset);
 char	*ft_strupper(char *str);
 char	ft_getlastchar(char *str);
 int		ft_inset(char c, char const *set);
+int		ft_recursive_power(int base, int n);
 #endif
