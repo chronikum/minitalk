@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:33 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/02 14:28:13 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/02 14:43:00 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_iterate_over_str(char *str_d, int pid_d)
 		i2 = 7;
 		str = str_d;
 		pid = pid_d;
-		ft_putstr_fd("SETTING!", 1);
 	}
 	if (str[i])
 	{
@@ -59,7 +58,7 @@ void	ft_iterate_over_str(char *str_d, int pid_d)
 static void	ft_ack_signal(int a)
 {
 	a = 1;
-	usleep(75);
+	usleep(40);
 	ft_iterate_over_str(NULL, 0);
 }
 
