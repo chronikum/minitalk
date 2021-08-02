@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/02 11:50:12 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/02 14:27:53 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	ft_sig_convert(int b)
 	if (counter > 7)
 	{
 		counter = 0;
+		// ft_putnbr_fd(b, 1);
 		cd = ft_bin_to_dec(ft_atoi(str));
 		write(1, &cd, 1);
 	}
@@ -59,11 +60,10 @@ static void ft_handle(int sig, siginfo_t *siginfo, void *context)
 {
 	if (sig == SIGUSR2)
 		ft_sig_convert(1);
-	else
+	else if (sig == SIGUSR1)
 		ft_sig_convert(0);
 	if (context)
 		sig = 1;
-	usleep(20);
 	kill(siginfo->si_pid, SIGUSR1);
 }
 
