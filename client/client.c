@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:33 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/02 09:21:06 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/02 10:25:51 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,20 @@ void	ft_iterate_over_str(char *str_d, int pid_d)
 		pid = pid_d;
 		ft_putstr_fd("SETTING!", 1);
 	}
-
-	if (str[i])
+	else if (str[i])
 	{
 		ft_putstr_fd("\nSending char: ", 1);
 		ft_putchar_fd(str[i], 1);
 		ft_char_to_bit(str[i++], pid);
-		pause();
 	}
 }
 
 static void	ft_ack_signal(int a)
 {
-	a = 1;
 	write(1, "SIGNAL!", 7);
+	a = 1;
 	ft_iterate_over_str(NULL, 0);
+	pause();
 }
 
 /*
@@ -86,13 +85,17 @@ int	main(int argc, char *argv[])
 	{
 		ack_action.sa_handler = ft_ack_signal;
 		sigemptyset(&ack_action.sa_mask);
-		ack_action.sa_flags = 0;
+		// ack_action.sa_flags = 0;
 		sigaction (SIGUSR1, &ack_action, NULL);
+		sigaction (SIGUSR2, &ack_action, NULL);
 		pid = ft_atoi(argv[1]);
 		send = argv[2];
 		ft_putnbr_fd(pid, 1);
 		write(1, "\n", 1);
 		ft_iterate_over_str(send, pid);
+		ft_ack_signal(1);
+		while (1)
+			pause();
 	}
 	return (0);
 }

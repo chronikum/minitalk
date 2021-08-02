@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/02 09:41:17 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/02 10:30:24 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,14 @@ static void	ft_sig_convert(int b, int a, siginfo_t *siginfo)
 		counter = 0;
 		cd = ft_bin_to_dec(ft_atoi(str));
 		write(1, &cd, 1);
-		ft_putstr_fd("\n Sending signal back.\n", 1);
-		kill(siginfo->si_pid, SIGUSR1);
+		ft_putstr_fd("\n Sending signal back.", 1);
+		ft_putunbr_fd(siginfo->si_pid, 1);
+		ft_putstr_fd("\n", 1);
+		a = 1;
+		// usleep(75);
+		while (1)
+			kill(siginfo->si_pid, SIGUSR1);
 	}
-	a = 1;
 }
 
 static void	ft_zero(int a, siginfo_t *siginfo)
