@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/02 11:20:35 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/02 11:50:12 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_bin_to_dec(long long n)
 **	8 bits, after that converts every 8 bits
 **	to the correct char representation
 */
-static void	ft_sig_convert(int b, int a, siginfo_t *siginfo)
+static void	ft_sig_convert(int b)
 {
 	static int	counter = 0;
 	static char	str[8];
@@ -52,31 +52,18 @@ static void	ft_sig_convert(int b, int a, siginfo_t *siginfo)
 		counter = 0;
 		cd = ft_bin_to_dec(ft_atoi(str));
 		write(1, &cd, 1);
-		ft_putunbr_fd(siginfo->si_pid, 1);
-		ft_putstr_fd("\n", 1);
-		a = 1;
 	}
-}
-
-static void	ft_zero(int a, siginfo_t *siginfo)
-{
-	ft_sig_convert(0, a, siginfo);
-}
-
-static void	ft_one(int a, siginfo_t *siginfo)
-{
-	ft_sig_convert(1, a, siginfo);
 }
 
 static void ft_handle(int sig, siginfo_t *siginfo, void *context)
 {
 	if (sig == SIGUSR2)
-		ft_one(1, siginfo);
+		ft_sig_convert(1);
 	else
-		ft_zero(0, siginfo);
+		ft_sig_convert(0);
 	if (context)
 		sig = 1;
-	usleep(70);
+	usleep(20);
 	kill(siginfo->si_pid, SIGUSR1);
 }
 
