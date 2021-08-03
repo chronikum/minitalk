@@ -6,7 +6,7 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/30 08:49:54 by jfritz            #+#    #+#              #
-#    Updated: 2021/08/03 08:23:22 by jfritz           ###   ########.fr        #
+#    Updated: 2021/08/03 08:27:34 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJS := $(*.o)
 
 SERVER = ./server/server.c
 
-SERVER = ./server/server_bonus.c
+SERVERBONUS = ./server/server_bonus.c
 
 CLIENT = ./client/client.c ./client/ft_sender.c
 
@@ -42,7 +42,9 @@ ${NAME}: libft
 	${CC} ${CFLAGS} ${SERVER} ${LIBFTNAME} -o ${SERVERNAME}
 	${CC} ${CFLAGS} ${CLIENT} ${LIBFTNAME} -o ${CLIENTNAME}
 
-bonus: ${NAME}
+bonus: libft
+	${CC} ${CFLAGS} ${SERVERBONUS} ${LIBFTNAME} -o ${SERVERNAME}
+	${CC} ${CFLAGS} ${CLIENTBONUS} ${LIBFTNAME} -o ${CLIENTNAME}
 
 server:
 	${CC} ${CFLAGS} ${SERVER} ${HELPERSRC} ${LIBFTNAME} -o ${SERVERNAME}
