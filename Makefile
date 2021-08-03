@@ -6,7 +6,7 @@
 #    By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/30 08:49:54 by jfritz            #+#    #+#              #
-#    Updated: 2021/08/03 08:07:07 by jfritz           ###   ########.fr        #
+#    Updated: 2021/08/03 08:23:22 by jfritz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,11 @@ OBJS := $(*.o)
 
 SERVER = ./server/server.c
 
+SERVER = ./server/server_bonus.c
+
 CLIENT = ./client/client.c ./client/ft_sender.c
+
+CLIENTBONUS = ./client/client_bonus.c ./client/ft_sender_bonus.c
 
 all: $(NAME)
 
