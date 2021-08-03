@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/03 07:57:36 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/03 08:08:35 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	ft_sig_convert(int b)
 	static char	str[8];
 	int			cd;
 
-	str[counter] = b + '0';
+	str[counter] = b + 48;
 	counter++;
 	if (counter > 7)
 	{
