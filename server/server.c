@@ -6,7 +6,7 @@
 /*   By: jfritz <jfritz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 08:49:29 by jfritz            #+#    #+#             */
-/*   Updated: 2021/08/02 15:39:15 by jfritz           ###   ########.fr       */
+/*   Updated: 2021/08/03 07:57:36 by jfritz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	ft_sig_convert(int b)
 	}
 }
 
-static void ft_handle(int sig, siginfo_t *siginfo, void *context)
+static void	ft_handle(int sig, siginfo_t *siginfo, void *context)
 {
 	if (sig == SIGUSR2)
 		ft_sig_convert(1);
@@ -68,15 +68,14 @@ static void ft_handle(int sig, siginfo_t *siginfo, void *context)
 
 int	main(void)
 {
-	pid_t	pid;
-	struct sigaction zero_action;
-	struct sigaction one_action;
+	pid_t				pid;
+	struct sigaction	zero_action;
+	struct sigaction	one_action;
 
 	sigemptyset(&zero_action.sa_mask);
 	sigemptyset(&one_action.sa_mask);
 	zero_action.sa_sigaction = ft_handle;
 	one_action.sa_sigaction = ft_handle;
-
 	zero_action.sa_flags = 0x0040;
 	one_action.sa_flags = 0x0040;
 	pid = getpid();
